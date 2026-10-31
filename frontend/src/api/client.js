@@ -1,4 +1,5 @@
-const BASE_URL = '/api/v1';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+const BASE_URL = `${API_BASE}/api/v1`;
 
 export const apiClient = {
   getToken() {
