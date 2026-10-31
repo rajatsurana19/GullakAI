@@ -32,20 +32,30 @@ from app.routers import (
     stock_rescue
 )
 
+_db_init_lock = False
+
+async def ensure_db_ready():
+    global _db_init_lock
+    if not _db_init_lock:
+        try:
+            await init_db()
+            from app.core.database import AsyncSessionLocal
+            from app.models.merchant import Merchant
+            from sqlalchemy import select
+            from app.seed.synthetic.generator import SyntheticDataGenerator
+            async with AsyncSessionLocal() as session:
+                res = await session.execute(select(Merchant).where(Merchant.is_demo == True))
+                if not res.scalar_one_or_none():
+                    gen = SyntheticDataGenerator(seed=42, merchant_count=12)
+                    await gen.generate_all(state="before")
+            _db_init_lock = True
+        except Exception as e:
+            logger.error(f"Error in ensure_db_ready: {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Initializing Gullak AI Backend Services...")
-    await init_db()
-    # Auto-seed synthetic dataset if empty
-    from app.core.database import AsyncSessionLocal
-    from app.models.merchant import Merchant
-    from sqlalchemy import select
-    from app.seed.synthetic.generator import SyntheticDataGenerator
-    async with AsyncSessionLocal() as session:
-        res = await session.execute(select(Merchant).where(Merchant.is_demo == True))
-        if not res.scalar_one_or_none():
-            gen = SyntheticDataGenerator(seed=42, merchant_count=12)
-            await gen.generate_all(state="before")
+    await ensure_db_ready()
     logger.info("Gullak AI Backend Ready.")
     yield
     logger.info("Shutting down Gullak AI Backend...")
@@ -67,6 +77,12 @@ app.add_middleware(
 )
 
 # Performance & Correlation ID Middleware
+@app.middleware("http")
+async def ensure_db_middleware(request: Request, call_next):
+    if not _db_init_lock:
+        await ensure_db_ready()
+    return await call_next(request)
+
 @app.middleware("http")
 async def add_process_time_and_logging(request: Request, call_next):
     start_time = time.time()

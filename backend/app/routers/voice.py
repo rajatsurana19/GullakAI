@@ -50,7 +50,7 @@ async def process_voice_or_text(
 
     # If no speech or text detected: ask merchant to repeat/clarify instead of defaulting to today's sales
     if not transcript:
-        effective_lang = req_lang if req_lang != "auto" else (merchant.preferred_language or "en")
+        effective_lang = req_lang if req_lang != "auto" else (getattr(merchant, "preferred_language", None) or "en")
         if effective_lang == "mr":
             msg = "मला तुमचा आवाज नीट ऐकू आला नाही. कृपया माइक दाबून पुन्हा बोला किंवा तुमचा प्रश्न टाईप करा."
         elif effective_lang in ["hi", "hinglish"]:

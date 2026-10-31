@@ -20,7 +20,7 @@ async def chat_with_agent(
 ):
     query = (req.text_query or "").strip()
     req_lang = req.language or "auto"
-    effective_lang = req_lang if req_lang != "auto" else (merchant.preferred_language or "en")
+    effective_lang = req_lang if req_lang != "auto" else (getattr(merchant, "preferred_language", None) or "en")
 
     if not query:
         if effective_lang == "mr":

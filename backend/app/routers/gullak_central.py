@@ -122,7 +122,7 @@ async def voice_gullak(
             transcript = ""
 
     if not transcript:
-        effective_lang = req_lang if req_lang != "auto" else (merchant.preferred_language or "en")
+        effective_lang = req_lang if req_lang != "auto" else (getattr(merchant, "preferred_language", None) or "en")
         msg = (
             "मला तुमचा आवाज नीट ऐकू आला नाही. कृपया माइक दाबून पुन्हा बोला."
             if effective_lang == "mr" else

@@ -1,0 +1,14 @@
+{
+  "services": {
+    "backend": {
+      "root": "backend",
+      "entrypoint": "app.main:app"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend"
+    }
+  ]
+}

@@ -2,7 +2,12 @@ import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Tuple
-import lightgbm as lgb
+try:
+    import lightgbm as lgb
+    HAS_LIGHTGBM = True
+except ImportError:
+    lgb = None
+    HAS_LIGHTGBM = False
 from app.core.logging import logger
 
 class LightGBMDemandForecaster:
@@ -29,7 +34,7 @@ class LightGBMDemandForecaster:
         is_festive_surge: bool = True
     ) -> List[Dict[str, Any]]:
         """Trains LightGBM regressor on merchant history and outputs future daily demand."""
-        if not historical_records or len(historical_records) < 7:
+        if not HAS_LIGHTGBM or not historical_records or len(historical_records) < 7:
             # Fallback heuristic
             base = 15.0 if not is_festive_surge else 35.0
             today = datetime.utcnow().date()

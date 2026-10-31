@@ -16,7 +16,11 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440 # 24 hours
     
     # Database
-    DATABASE_URL: str = "sqlite+aiosqlite:///./gullak.db"
+    DATABASE_URL: str = (
+        "sqlite+aiosqlite:////tmp/gullak.db"
+        if os.environ.get("VERCEL")
+        else "sqlite+aiosqlite:///./gullak.db"
+    )
     
     # Event Bus & Messaging
     EVENT_BUS_MODE: str = "local" # local | kafka

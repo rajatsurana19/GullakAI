@@ -23,7 +23,7 @@ async def get_dashboard_summary(
     merchant: Merchant = Depends(get_current_merchant),
     db: AsyncSession = Depends(get_db)
 ):
-    effective_lang = (lang or merchant.preferred_language or "mr").lower().strip()
+    effective_lang = (lang or getattr(merchant, "preferred_language", None) or "mr").lower().strip()
 
     # 1. Sales & Revenue
     sales = await PaymentService.get_today_summary(db, merchant.id)
