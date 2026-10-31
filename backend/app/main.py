@@ -129,6 +129,16 @@ app.include_router(gullak_central.router, prefix=settings.API_V1_PREFIX)
 app.include_router(what_if.router, prefix=settings.API_V1_PREFIX)
 app.include_router(stock_rescue.router, prefix=settings.API_V1_PREFIX)
 
+@app.get("/")
+async def root():
+    return {
+        "status": "healthy",
+        "app": settings.APP_NAME,
+        "docs": "/docs",
+        "health": "/health",
+        "api_v1": settings.API_V1_PREFIX
+    }
+
 @app.get("/health")
 async def health_check():
     return {
