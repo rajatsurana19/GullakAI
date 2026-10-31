@@ -1,5 +1,5 @@
-# Gullak AI: Merchant Operations and Decision Support System
-
+# Gullak AI: THE VOICE-FIRST AI BUSINESS PARTNER FOR EVERY PAYTM MERCHANT
+ 
 Gullak AI is a merchant operating system and decision support platform engineered for Indian retail merchants (kirana, grocery, and general stores) using the Paytm merchant ecosystem. It integrates store transactions, Soundbox audio events, inventory turnover data, and customer visit patterns into actionable business recommendations.
 
 The platform enforces strict financial determinism, explicit human-in-the-loop approvals, tamper-evident cryptographic audit logging, and closed-loop causal uplift measurement.
