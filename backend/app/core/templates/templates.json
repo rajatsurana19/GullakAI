@@ -1,0 +1,197 @@
+{
+  "kirana": {
+    "code": "kirana",
+    "name": "Kirana & General Store",
+    "relevant_agents": [
+      "SalesIntelligenceAgent",
+      "InventoryIntelligenceAgent",
+      "CustomerGrowthAgent",
+      "WorkingCapitalAgent",
+      "ProcurementAgent"
+    ],
+    "kpis": [
+      "todays_sales",
+      "tomorrow_deposit",
+      "orders_count",
+      "low_stock_count",
+      "at_risk_customers"
+    ],
+    "surfaces": ["aaj", "vichara", "kriya", "grahak", "maal_paisa"],
+    "has_inventory": true,
+    "has_suppliers": true,
+    "has_credit": true,
+    "seasonality": ["Diwali", "Ganesh Chaturthi", "Monthly Ration 1st-10th"],
+    "default_thresholds": {
+      "safety_stock_days": 4,
+      "at_risk_days": 30,
+      "min_loan_inr": 25000,
+      "max_loan_inr": 150000
+    },
+    "vocabulary": {
+      "mr": { "item": "वस्तू / माल", "customer": "ग्राहक", "stock": "साठा", "deposit": "बँक जमा" },
+      "hi": { "item": "सामान", "customer": "ग्राहक", "stock": "स्टॉक", "deposit": "बैंक जमा" },
+      "en": { "item": "Item", "customer": "Customer", "stock": "Stock", "deposit": "Bank Deposit" }
+    },
+    "cold_start_priors": {
+      "avg_daily_sales": 34000.0,
+      "avg_ticket": 850.0,
+      "typical_margin": 0.18,
+      "digital_share": 0.72
+    }
+  },
+  "sweets_bakery": {
+    "code": "sweets_bakery",
+    "name": "Sweets, Farsan & Bakery",
+    "relevant_agents": [
+      "SalesIntelligenceAgent",
+      "InventoryIntelligenceAgent",
+      "CustomerGrowthAgent",
+      "WorkingCapitalAgent",
+      "ProcurementAgent"
+    ],
+    "kpis": [
+      "todays_sales",
+      "tomorrow_deposit",
+      "orders_count",
+      "low_stock_count",
+      "at_risk_customers"
+    ],
+    "surfaces": ["aaj", "vichara", "kriya", "grahak", "maal_paisa"],
+    "has_inventory": true,
+    "has_suppliers": true,
+    "has_credit": true,
+    "seasonality": ["Raksha Bandhan", "Diwali", "Holi", "Weddings"],
+    "default_thresholds": {
+      "safety_stock_days": 3,
+      "at_risk_days": 25,
+      "min_loan_inr": 40000,
+      "max_loan_inr": 250000
+    },
+    "vocabulary": {
+      "mr": { "item": "मिठाई / माल", "customer": "ग्राहक", "stock": "शिल्लक साठा", "deposit": "बँक जमा" },
+      "hi": { "item": "मिठाई / सामान", "customer": "ग्राहक", "stock": "बचा हुआ स्टॉक", "deposit": "बैंक जमा" },
+      "en": { "item": "Sweets item", "customer": "Customer", "stock": "Fresh stock", "deposit": "Bank Deposit" }
+    },
+    "cold_start_priors": {
+      "avg_daily_sales": 38000.0,
+      "avg_ticket": 620.0,
+      "typical_margin": 0.32,
+      "digital_share": 0.68
+    }
+  },
+  "restaurant_chai": {
+    "code": "restaurant_chai",
+    "name": "Restaurant, Cafe & Chai Stall",
+    "relevant_agents": [
+      "SalesIntelligenceAgent",
+      "InventoryIntelligenceAgent",
+      "CustomerGrowthAgent",
+      "WorkingCapitalAgent"
+    ],
+    "kpis": [
+      "todays_sales",
+      "tomorrow_deposit",
+      "orders_count",
+      "repeat_diners"
+    ],
+    "surfaces": ["aaj", "vichara", "kriya", "grahak", "maal_paisa"],
+    "has_inventory": true,
+    "has_suppliers": true,
+    "has_credit": true,
+    "seasonality": ["Rainy Season Chais", "Weekend Dinners", "Festivals"],
+    "default_thresholds": {
+      "safety_stock_days": 2,
+      "at_risk_days": 14,
+      "min_loan_inr": 30000,
+      "max_loan_inr": 180000
+    },
+    "vocabulary": {
+      "mr": { "item": "मेनू / पदार्थ", "customer": "ग्राहक / खादाड", "stock": "कच्चा माल", "deposit": "बँक जमा" },
+      "hi": { "item": "डिश / मेनू", "customer": "ग्राहक", "stock": "रॉ मटीरियल", "deposit": "बैंक जमा" },
+      "en": { "item": "Menu item", "customer": "Diner", "stock": "Raw material", "deposit": "Bank Deposit" }
+    },
+    "cold_start_priors": {
+      "avg_daily_sales": 28000.0,
+      "avg_ticket": 320.0,
+      "typical_margin": 0.40,
+      "digital_share": 0.85
+    }
+  },
+  "pharmacy": {
+    "code": "pharmacy",
+    "name": "Pharmacy & Chemist",
+    "relevant_agents": [
+      "SalesIntelligenceAgent",
+      "InventoryIntelligenceAgent",
+      "CustomerGrowthAgent",
+      "WorkingCapitalAgent",
+      "ProcurementAgent"
+    ],
+    "kpis": [
+      "todays_sales",
+      "tomorrow_deposit",
+      "orders_count",
+      "chronic_patients_refill",
+      "low_stock_count"
+    ],
+    "surfaces": ["aaj", "vichara", "kriya", "grahak", "maal_paisa"],
+    "has_inventory": true,
+    "has_suppliers": true,
+    "has_credit": true,
+    "seasonality": ["Monsoon Flu", "Seasonal Fevers", "Winter Wellness"],
+    "default_thresholds": {
+      "safety_stock_days": 7,
+      "at_risk_days": 45,
+      "min_loan_inr": 50000,
+      "max_loan_inr": 300000
+    },
+    "vocabulary": {
+      "mr": { "item": "औषध / गोळ्या", "customer": "रुग्ण / ग्राहक", "stock": "औषध साठा", "deposit": "बँक जमा" },
+      "hi": { "item": "दवाइयां", "customer": "मरीज़ / ग्राहक", "stock": "दवा का स्टॉक", "deposit": "बैंक जमा" },
+      "en": { "item": "Medicine", "customer": "Patient", "stock": "Medical stock", "deposit": "Bank Deposit" }
+    },
+    "cold_start_priors": {
+      "avg_daily_sales": 32000.0,
+      "avg_ticket": 480.0,
+      "typical_margin": 0.22,
+      "digital_share": 0.75
+    }
+  },
+  "salon_service": {
+    "code": "salon_service",
+    "name": "Salon, Beauty Parlour & Spa",
+    "relevant_agents": [
+      "SalesIntelligenceAgent",
+      "CustomerGrowthAgent",
+      "WorkingCapitalAgent"
+    ],
+    "kpis": [
+      "todays_sales",
+      "tomorrow_deposit",
+      "appointments_count",
+      "at_risk_clients"
+    ],
+    "surfaces": ["aaj", "vichara", "kriya", "grahak", "maal_paisa"],
+    "has_inventory": false,
+    "has_suppliers": false,
+    "has_credit": true,
+    "seasonality": ["Diwali Grooming", "Wedding Season", "Eid Grooming"],
+    "default_thresholds": {
+      "safety_stock_days": 0,
+      "at_risk_days": 40,
+      "min_loan_inr": 20000,
+      "max_loan_inr": 100000
+    },
+    "vocabulary": {
+      "mr": { "item": "सेवा / पॅकेज", "customer": "क्लायंट / ग्राहक", "stock": "काही नाही", "deposit": "बँक जमा" },
+      "hi": { "item": "सर्विस / पैकेज", "customer": "क्लाइंट / ग्राहक", "stock": "लागू नहीं", "deposit": "बैंक जमा" },
+      "en": { "item": "Service", "customer": "Client", "stock": "N/A", "deposit": "Bank Deposit" }
+    },
+    "cold_start_priors": {
+      "avg_daily_sales": 18000.0,
+      "avg_ticket": 650.0,
+      "typical_margin": 0.65,
+      "digital_share": 0.80
+    }
+  }
+}
